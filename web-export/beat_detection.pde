@@ -89,14 +89,7 @@ float threshold;
 float standardDeviation;
 
 int glitchBeatCounter = 0;
-int GLITCH_MAX = 4;
-
-String[] videoArray = {"ballerinas.mp4","bwdance2.mp4","finnishguy2.mp4","napoleon2.mp4",
-                       "bollywood.mp4", "cassie.mp4",  "greensuits.mp4", "turqouisejeep.mp4",
-                       "bollywood2.mp4","cgi.mp4",      "greensuits2.mp4",    "turqouisejeep2.mp4",
-                       "bollywood3.mp4","chair1.mp4",    "hippo.mp4",
-                       "bollywood4.mp4","chair2.mp4",    "hippo2.mp4",
-                       "bwdance.mp4",   "finnishguy.mp4",    "napoleon.mp4"};
+int GLITCH_MAX = 2;
 
 //////////////////////////////////
 
@@ -256,7 +249,6 @@ void draw() {
   image(myMovie, 0, 0);
   if (beatCounter < 5) {
     if (glitchBeatCounter == GLITCH_MAX) {
-      chooseRandomVideo();
       myMovie.jump(0); 
       glitchBeatCounter = 0;     
     }
@@ -299,13 +291,6 @@ int mode(int[] array) {
   return maxEl;
 }
 
-void chooseRandomVideo() {
-  myMovie.stop();
-  String video = videoArray[int(random(videoArray.length))];
-  myMovie = new Movie(this, video);
-  myMovie.loop();
-}
-
 void movieEvent(Movie m) {
   m.read();
 }
@@ -317,3 +302,5 @@ void stop()                                //Closes everything on stop
   minim.stop();                            //Always stop Minim before exiting
   super.stop();                            //This closes the sketch
 }
+
+
